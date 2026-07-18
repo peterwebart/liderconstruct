@@ -1,0 +1,70 @@
+# =============================================================================
+# LiderConstruct — LOCAL DEVELOPMENT compose (Postgres + optional app)
+# -----------------------------------------------------------------------------
+# Purpose: a reproducible local Postgres (with the required extensions) so
+# `pnpm dev` / `pnpm seed` / `pnpm import:catalog` work with zero manual DB
+# setup. This is a DEV convenience — it is NOT the production deployment
+# (that is Coolify; see coolify.md).
+#
+# Two ways to use it:
+#   A) DB only (recommended for active development):
+#        docker compose up -d db
+#        pnpm install && pnpm dev        # app runs on the host
+#   B) Full stack (app in a container, mirrors the production image):
+#        docker compose --profile app up --build
+#
+# The supplier spreadsheet is NOT in Git. To import inside the app container,
+# drop the .ods into ./data and it is mounted read-only at /import (see below).
+# =============================================================================
+
+name: liderconstruct
+
+services:
+  db:
+    image: postgres:16-bookworm
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: lider
+      POSTGRES_PASSWORD: StrongPassword123!
+      POSTGRES_DB: liderconstruct
+    ports:
+      # Host 5433 -> container 5432 (avoids clashing with a local Postgres).
+      - "5433:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      # Runs ONCE on first init of an empty data dir: creates the extensions
+      # the search/import layer needs (unaccent, pg_trgm). See ./db/init.
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lider -d liderconstruct"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # Optional: run the app in a container too (profile "app").
+  app:
+    profiles: ["app"]
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_SERVER_URL: http://localhost:3000
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URI: postgres://lider:StrongPassword123!@db:5432/liderconstruct
+      PAYLOAD_SECRET: dev-only-not-a-real-secret-change-me
+      NEXT_PUBLIC_SERVER_URL: http://localhost:3000
+      NEXT_PUBLIC_CONTACT_PHONE: "+373 22 000 000"
+      NEXT_PUBLIC_CONTACT_EMAIL: info@liderconstruct.md
+    ports:
+      - "3000:3000"
+    volumes:
+      # Put your supplier .ods in ./data to import from inside the container:
+      #   docker compose exec app pnpm import:catalog /import/<file>.ods full
+      - ./data:/import:ro
+
+volumes:
+  db-data:

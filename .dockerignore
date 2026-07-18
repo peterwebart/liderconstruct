@@ -1,0 +1,35 @@
+# Build artifacts & deps (reinstalled/rebuilt in-image)
+node_modules
+.next
+build
+dist
+*.tsbuildinfo
+
+# Secrets — never send to the build context
+.env
+.env.*
+!.env.example
+
+# VCS & tooling
+.git
+.gitignore
+.github
+
+# Local/editor noise
+*.log
+.DS_Store
+.vscode
+.idea
+
+# Docs & infra that don't belong in the image
+coolify.md
+README.md
+Dockerfile
+compose.yaml
+docker-compose*.yml
+
+# Local data (spreadsheets are mounted at runtime, not built in)
+*.ods
+*.xlsx
+*.csv
+/data
