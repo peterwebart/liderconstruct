@@ -1,0 +1,77 @@
+[
+  {
+    "code": "buc",
+    "label": "Bucată",
+    "symbol": "buc",
+    "aliases": [
+      "buc"
+    ]
+  },
+  {
+    "code": "sac",
+    "label": "Sac",
+    "symbol": "sac",
+    "aliases": [
+      "sac",
+      "saci"
+    ]
+  },
+  {
+    "code": "m2",
+    "label": "Metru pătrat",
+    "symbol": "m²",
+    "aliases": [
+      "1 m2",
+      "m2"
+    ]
+  },
+  {
+    "code": "foaie",
+    "label": "Foaie",
+    "symbol": "foaie",
+    "aliases": [
+      "foi"
+    ]
+  },
+  {
+    "code": "ml",
+    "label": "Metru liniar",
+    "symbol": "m.l.",
+    "aliases": [
+      "ml"
+    ]
+  },
+  {
+    "code": "kg",
+    "label": "Kilogram",
+    "symbol": "kg",
+    "aliases": [
+      "kg",
+      "Kg"
+    ]
+  },
+  {
+    "code": "cutie",
+    "label": "Cutie",
+    "symbol": "cutie",
+    "aliases": [
+      "Cutie"
+    ]
+  },
+  {
+    "code": "rulou",
+    "label": "Rulou",
+    "symbol": "rulou",
+    "aliases": [
+      "Rulou"
+    ]
+  },
+  {
+    "code": "val",
+    "label": "Val",
+    "symbol": "val",
+    "aliases": [
+      "val"
+    ]
+  }
+]

@@ -1,0 +1,502 @@
+[
+  {
+    "key": "tip-material",
+    "displayName": "Tip material",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": true,
+    "isSearchable": true,
+    "isComparable": true,
+    "displayPriority": 10
+  },
+  {
+    "key": "culoare",
+    "displayName": "Culoare",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": true,
+    "isSearchable": true,
+    "isComparable": true,
+    "displayPriority": 20
+  },
+  {
+    "key": "destinatie",
+    "displayName": "Destinație",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": true,
+    "isSearchable": true,
+    "isComparable": false,
+    "displayPriority": 30
+  },
+  {
+    "key": "tip-deschidere",
+    "displayName": "Tip deschidere",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": true,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 40
+  },
+  {
+    "key": "constructie-usa-interior",
+    "displayName": "Construcție ușă",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": true,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 50
+  },
+  {
+    "key": "grosime-foaie-usa",
+    "displayName": "Grosime foaie ușă",
+    "dataType": "dimension",
+    "group": "dimensions",
+    "isFilterable": true,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 60
+  },
+  {
+    "key": "consum",
+    "displayName": "Consum",
+    "dataType": "text",
+    "group": "performance",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 70
+  },
+  {
+    "key": "densitate",
+    "displayName": "Densitate",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 80
+  },
+  {
+    "key": "setul-de-usa-include",
+    "displayName": "Setul de ușă include",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 120
+  },
+  {
+    "key": "grosime-foaie-usa-mm",
+    "displayName": "Grosime foaie ușă (mm)",
+    "dataType": "dimension",
+    "group": "dimensions",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 125
+  },
+  {
+    "key": "acoperire",
+    "displayName": "Acoperire",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 130
+  },
+  {
+    "key": "grosime-cutie-mm",
+    "displayName": "Grosime cutie (mm)",
+    "dataType": "dimension",
+    "group": "dimensions",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 140
+  },
+  {
+    "key": "inaltime-foaie-usa-m",
+    "displayName": "Înălțime foaie usa (m)",
+    "dataType": "dimension",
+    "group": "dimensions",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 145
+  },
+  {
+    "key": "ornamentare-cu-sticla",
+    "displayName": "Ornamentare cu sticlă",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 155
+  },
+  {
+    "key": "latime-cutie-mdf-mm",
+    "displayName": "Latime cutie MDF (mm)",
+    "dataType": "dimension",
+    "group": "dimensions",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 160
+  },
+  {
+    "key": "lungime-m",
+    "displayName": "Lungime(m)",
+    "dataType": "dimension",
+    "group": "dimensions",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 165
+  },
+  {
+    "key": "latime-mm",
+    "displayName": "Latime (mm)",
+    "dataType": "dimension",
+    "group": "dimensions",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 170
+  },
+  {
+    "key": "grosime-mm",
+    "displayName": "Grosime (mm)",
+    "dataType": "dimension",
+    "group": "dimensions",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 175
+  },
+  {
+    "key": "tip-acoperire",
+    "displayName": "Tip acoperire",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 180
+  },
+  {
+    "key": "lungime-mm",
+    "displayName": "Lungime (mm)",
+    "dataType": "dimension",
+    "group": "dimensions",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 185
+  },
+  {
+    "key": "dimensiuni-mm",
+    "displayName": "Dimensiuni (mm)",
+    "dataType": "dimension",
+    "group": "dimensions",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 190
+  },
+  {
+    "key": "temperatura-de-aplicare",
+    "displayName": "Temperatura de aplicare",
+    "dataType": "text",
+    "group": "performance",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 195
+  },
+  {
+    "key": "bucati-in-ambalaj",
+    "displayName": "Bucati in ambalaj",
+    "dataType": "text",
+    "group": "packaging",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 200
+  },
+  {
+    "key": "diametru-mm",
+    "displayName": "Diametru (mm)",
+    "dataType": "dimension",
+    "group": "dimensions",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 205
+  },
+  {
+    "key": "fractia-mm",
+    "displayName": "Fractia (mm)",
+    "dataType": "dimension",
+    "group": "dimensions",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 210
+  },
+  {
+    "key": "grosimea-metalului-pinza-usa-mm",
+    "displayName": "Grosimea metalului pînză ușă (mm)",
+    "dataType": "dimension",
+    "group": "dimensions",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 215
+  },
+  {
+    "key": "umplutura-usa",
+    "displayName": "Umplutura ușă",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 220
+  },
+  {
+    "key": "tip-lacat",
+    "displayName": "Tip lacăt",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 225
+  },
+  {
+    "key": "culoare-partea-exterioara",
+    "displayName": "Culoare partea exterioară",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 230
+  },
+  {
+    "key": "culoare-partea-interioara",
+    "displayName": "Culoare partea interioară",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 235
+  },
+  {
+    "key": "lat-cut-telescop-mdf",
+    "displayName": "Lat cut telescop MDF",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 240
+  },
+  {
+    "key": "m2-in-ambalaj",
+    "displayName": "m2 in ambalaj",
+    "dataType": "text",
+    "group": "packaging",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 245
+  },
+  {
+    "key": "timp-aplicare-minute",
+    "displayName": "Timp aplicare (minute)",
+    "dataType": "text",
+    "group": "performance",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 250
+  },
+  {
+    "key": "latime-m",
+    "displayName": "Latime (m)",
+    "dataType": "dimension",
+    "group": "dimensions",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 255
+  },
+  {
+    "key": "latime-cutie-lemn-mm",
+    "displayName": "Latime cutie lemn (mm)",
+    "dataType": "dimension",
+    "group": "dimensions",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 260
+  },
+  {
+    "key": "suprafata-m2",
+    "displayName": "Suprafata (m2)",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 265
+  },
+  {
+    "key": "grosimea-metalului-cutiei-mm",
+    "displayName": "Grosimea metalului cutiei mm",
+    "dataType": "dimension",
+    "group": "dimensions",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 270
+  },
+  {
+    "key": "acoperire-partea-exterioara",
+    "displayName": "Acoperire partea exterioară",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 275
+  },
+  {
+    "key": "acoperire-partea-interioara",
+    "displayName": "Acoperire partea interioară",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 280
+  },
+  {
+    "key": "antifurt",
+    "displayName": "Antifurt",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 285
+  },
+  {
+    "key": "grosime-strat-mm-sape-mortare",
+    "displayName": "Grosime Strat (mm) sape mortare",
+    "dataType": "dimension",
+    "group": "dimensions",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 290
+  },
+  {
+    "key": "conductivitate-termica-w-mk",
+    "displayName": "Conductivitate termica (W/mK)",
+    "dataType": "text",
+    "group": "performance",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 295
+  },
+  {
+    "key": "structura-tinc",
+    "displayName": "Structura tinc",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 300
+  },
+  {
+    "key": "densitate-kg-m3",
+    "displayName": "Densitate kg/m3",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 305
+  },
+  {
+    "key": "grosime-metal-mm",
+    "displayName": "Grosime metal (mm)",
+    "dataType": "dimension",
+    "group": "dimensions",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 310
+  },
+  {
+    "key": "grosime-sirma-mm",
+    "displayName": "Grosime sîrmă (mm)",
+    "dataType": "dimension",
+    "group": "dimensions",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 315
+  },
+  {
+    "key": "timp-uscare-ore",
+    "displayName": "Timp uscare (ore)",
+    "dataType": "text",
+    "group": "performance",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 320
+  },
+  {
+    "key": "lat-cut-telescop-lemn",
+    "displayName": "Lat cut telescop lemn",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 325
+  },
+  {
+    "key": "capacitate",
+    "displayName": "Capacitate",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 330
+  },
+  {
+    "key": "clasa-de-abraziune",
+    "displayName": "Clasa de abraziune",
+    "dataType": "text",
+    "group": "technical",
+    "isFilterable": false,
+    "isSearchable": false,
+    "isComparable": true,
+    "displayPriority": 335
+  }
+]

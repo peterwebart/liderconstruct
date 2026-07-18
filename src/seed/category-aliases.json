@@ -1,0 +1,746 @@
+[
+  {
+    "supplier": "Uși de interior",
+    "slug": "usi-de-interior",
+    "path": "Uși și ferestre > Uși de interior",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Uși metalice",
+    "slug": "usi-metalice",
+    "path": "Uși și ferestre > Uși metalice",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Tencuială mozaicată",
+    "slug": "tencuieli-decorative",
+    "path": "Fațade și sisteme exterioare > Tencuieli decorative",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Mânere și rozete",
+    "slug": "feronerie-pentru-usi",
+    "path": "Uși și ferestre > Feronerie pentru uși",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Laminat",
+    "slug": "laminat",
+    "path": "Pardoseli > Laminat",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Emailuri",
+    "slug": "vopsele-decorative",
+    "path": "Vopsele și finisaje > Vopsele decorative",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Lacăte și accesorii",
+    "slug": "feronerie-pentru-usi",
+    "path": "Uși și ferestre > Feronerie pentru uși",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Chituri pentru rosturi",
+    "slug": "chituri-pentru-rosturi",
+    "path": "Beton, ciment și mortare > Chituri pentru rosturi",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Profile pentru îmbinare",
+    "slug": "profile-de-trecere",
+    "path": "Pardoseli > Profile de trecere",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Plinte",
+    "slug": "plinte",
+    "path": "Pardoseli > Plinte",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Vopsea interior",
+    "slug": "vopsele-decorative",
+    "path": "Vopsele și finisaje > Vopsele decorative",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Grunduri",
+    "slug": "grunduri",
+    "path": "Vopsele și finisaje > Grunduri",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Lacuri",
+    "slug": "lacuri-si-protectia-lemnului",
+    "path": "Vopsele și finisaje > Lacuri și protecția lemnului",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Baghete fără ornament",
+    "slug": "baghete-si-elemente-decorative",
+    "path": "Vopsele și finisaje > Baghete și elemente decorative",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Tencuială decorativă (tinc)",
+    "slug": "tencuieli-decorative",
+    "path": "Fațade și sisteme exterioare > Tencuieli decorative",
+    "confidence": 0.86
+  },
+  {
+    "supplier": "Adezivi pentru teracotă",
+    "slug": "adezivi-pentru-constructii",
+    "path": "Beton, ciment și mortare > Adezivi pentru construcții",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Pardoseli din vinil SPS",
+    "slug": "pardoseli-vinil-spc",
+    "path": "Pardoseli > Pardoseli vinil / SPC",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Pelicule, membrane, accesorii acoperiș",
+    "slug": "membrane-si-folii-pentru-acoperis",
+    "path": "Acoperișuri > Membrane și folii pentru acoperiș",
+    "confidence": 0.86
+  },
+  {
+    "supplier": "Buloane",
+    "slug": "buloane-piulite-saibe",
+    "path": "Elemente de fixare > Buloane, piulițe, șaibe",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Profile",
+    "slug": "profile-pentru-gips-carton",
+    "path": "Gips-carton și sisteme interioare > Profile pentru gips-carton",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Vopsea exterior",
+    "slug": "vopsele-decorative",
+    "path": "Vopsele și finisaje > Vopsele decorative",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Vată minerală",
+    "slug": "vata-minerala",
+    "path": "Termoizolare și fonoizolare > Vată minerală",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Coler",
+    "slug": "adezivi-pentru-constructii",
+    "path": "Beton, ciment și mortare > Adezivi pentru construcții",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Gleturi",
+    "slug": "gleturi",
+    "path": "Beton, ciment și mortare > Gleturi",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Jaluzele",
+    "slug": "jaluzele-si-rulouri",
+    "path": "Uși și ferestre > Jaluzele și rulouri",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Adezivi pentru termoizolare",
+    "slug": "sisteme-termoizolante-pentru-fatade",
+    "path": "Fațade și sisteme exterioare > Sisteme termoizolante pentru fațade",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Burghii",
+    "slug": "burghii-si-accesorii",
+    "path": "Scule și echipamente > Burghii și accesorii",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Amescuri uscate",
+    "slug": "mortare-si-sape",
+    "path": "Beton, ciment și mortare > Mortare și șape",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Tehnonikoli (Rusia)",
+    "slug": "membrane-si-folii-pentru-acoperis",
+    "path": "Acoperișuri > Membrane și folii pentru acoperiș",
+    "confidence": 0.86
+  },
+  {
+    "supplier": "Jgheab d100 Burlan d75 Alb",
+    "slug": "sisteme-de-jgheaburi-si-burlane",
+    "path": "Acoperișuri > Sisteme de jgheaburi și burlane",
+    "confidence": 0.86
+  },
+  {
+    "supplier": "Jgheab d100 Burlan d75 Brun",
+    "slug": "sisteme-de-jgheaburi-si-burlane",
+    "path": "Acoperișuri > Sisteme de jgheaburi și burlane",
+    "confidence": 0.86
+  },
+  {
+    "supplier": "Jgheab d125 Burlan d105 Alb",
+    "slug": "sisteme-de-jgheaburi-si-burlane",
+    "path": "Acoperișuri > Sisteme de jgheaburi și burlane",
+    "confidence": 0.86
+  },
+  {
+    "supplier": "Jgheab d125 Burlan d105 Brun",
+    "slug": "sisteme-de-jgheaburi-si-burlane",
+    "path": "Acoperișuri > Sisteme de jgheaburi și burlane",
+    "confidence": 0.86
+  },
+  {
+    "supplier": "Jgheab d125 Burlan d105 Antracit",
+    "slug": "sisteme-de-jgheaburi-si-burlane",
+    "path": "Acoperișuri > Sisteme de jgheaburi și burlane",
+    "confidence": 0.86
+  },
+  {
+    "supplier": "Baghete cu ornament",
+    "slug": "baghete-si-elemente-decorative",
+    "path": "Vopsele și finisaje > Baghete și elemente decorative",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Silicon și spumă",
+    "slug": "etansanti-silicon-spuma",
+    "path": "Hidroizolație și chimie pentru construcții > Etanșanți (silicon, spumă)",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Scule de tăiat",
+    "slug": "scule-de-taiat",
+    "path": "Scule și echipamente > Scule de tăiat",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Tavane casetate Armstrong",
+    "slug": "tavane-casetate",
+    "path": "Tavane > Tavane casetate",
+    "confidence": 0.86
+  },
+  {
+    "supplier": "Gips carton",
+    "slug": "placi-de-gips-carton",
+    "path": "Gips-carton și sisteme interioare > Plăci de gips-carton",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Protecția lemnului",
+    "slug": "lacuri-si-protectia-lemnului",
+    "path": "Vopsele și finisaje > Lacuri și protecția lemnului",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Lambriu din lemn",
+    "slug": "placi-si-panouri",
+    "path": "Gips-carton și sisteme interioare > Plăci și panouri",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Piulițe",
+    "slug": "buloane-piulite-saibe",
+    "path": "Elemente de fixare > Buloane, piulițe, șaibe",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Jgheab d125 Burlan d90 Cupru",
+    "slug": "sisteme-de-jgheaburi-si-burlane",
+    "path": "Acoperișuri > Sisteme de jgheaburi și burlane",
+    "confidence": 0.86
+  },
+  {
+    "supplier": "Ancore",
+    "slug": "dibluri-si-ancore",
+    "path": "Elemente de fixare > Dibluri și ancore",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Șaibe",
+    "slug": "buloane-piulite-saibe",
+    "path": "Elemente de fixare > Buloane, piulițe, șaibe",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Jgheab d125 Burlan d90 Roșu",
+    "slug": "sisteme-de-jgheaburi-si-burlane",
+    "path": "Acoperișuri > Sisteme de jgheaburi și burlane",
+    "confidence": 0.86
+  },
+  {
+    "supplier": "Lățimea 250 mm",
+    "slug": "accesorii-acoperis",
+    "path": "Acoperișuri > Accesorii acoperiș",
+    "confidence": 0.86
+  },
+  {
+    "supplier": "Cuie",
+    "slug": "cuie-si-nituri",
+    "path": "Elemente de fixare > Cuie și nituri",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Șuruburi",
+    "slug": "suruburi",
+    "path": "Elemente de fixare > Șuruburi",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Mortar pe bază de ciment",
+    "slug": "mortare-si-sape",
+    "path": "Beton, ciment și mortare > Mortare și șape",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Hârtie abrazivă",
+    "slug": "abrazive",
+    "path": "Scule și echipamente > Abrazive",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Accesorii pentru profile",
+    "slug": "profile-pentru-gips-carton",
+    "path": "Gips-carton și sisteme interioare > Profile pentru gips-carton",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Materiale hidroizolante",
+    "slug": "materiale-hidroizolante",
+    "path": "Hidroizolație și chimie pentru construcții > Materiale hidroizolante",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Șape autonivelante",
+    "slug": "mortare-si-sape",
+    "path": "Beton, ciment și mortare > Mortare și șape",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Balamale",
+    "slug": "feronerie-pentru-usi",
+    "path": "Uși și ferestre > Feronerie pentru uși",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Spacluri, driști, mistrii",
+    "slug": "scule-de-mana",
+    "path": "Scule și echipamente > Scule de mână",
+    "confidence": 0.86
+  },
+  {
+    "supplier": "Ciocane, Topoare",
+    "slug": "scule-de-mana",
+    "path": "Scule și echipamente > Scule de mână",
+    "confidence": 0.86
+  },
+  {
+    "supplier": "Clește",
+    "slug": "scule-de-mana",
+    "path": "Scule și echipamente > Scule de mână",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Scule de măsurare",
+    "slug": "scule-de-masurare",
+    "path": "Scule și echipamente > Scule de măsurare",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Blocuri BCA",
+    "slug": "blocuri",
+    "path": "Zidărie și materiale structurale > Blocuri",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Corniere și leațuri",
+    "slug": "accesorii-acoperis",
+    "path": "Acoperișuri > Accesorii acoperiș",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Leaț",
+    "slug": "accesorii-acoperis",
+    "path": "Acoperișuri > Accesorii acoperiș",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Polistiren expandat",
+    "slug": "polistiren",
+    "path": "Termoizolare și fonoizolare > Polistiren",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Mastic bituminos",
+    "slug": "materiale-hidroizolante",
+    "path": "Hidroizolație și chimie pentru construcții > Materiale hidroizolante",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Adaosuri în beton",
+    "slug": "aditivi-pentru-beton",
+    "path": "Beton, ciment și mortare > Aditivi pentru beton",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Accesorii",
+    "slug": "profile-pentru-gips-carton",
+    "path": "Gips-carton și sisteme interioare > Profile pentru gips-carton",
+    "confidence": 0.86
+  },
+  {
+    "supplier": "Membrane bituminoase",
+    "slug": "membrane-si-folii-pentru-acoperis",
+    "path": "Acoperișuri > Membrane și folii pentru acoperiș",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Lățimea 200 mm",
+    "slug": "accesorii-acoperis",
+    "path": "Acoperișuri > Accesorii acoperiș",
+    "confidence": 0.86
+  },
+  {
+    "supplier": "Dibluri cu șurub",
+    "slug": "dibluri-si-ancore",
+    "path": "Elemente de fixare > Dibluri și ancore",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Soluiții antimucegai",
+    "slug": "solutii-de-protectie",
+    "path": "Hidroizolație și chimie pentru construcții > Soluții de protecție",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Diblu din polipriopilenă",
+    "slug": "dibluri-si-ancore",
+    "path": "Elemente de fixare > Dibluri și ancore",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Accesorii pentru zugrăvit",
+    "slug": "accesorii-pentru-zugravit",
+    "path": "Scule și echipamente > Accesorii pentru zugrăvit",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Chei, tubulare",
+    "slug": "scule-de-mana",
+    "path": "Scule și echipamente > Scule de mână",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Bituri",
+    "slug": "burghii-si-accesorii",
+    "path": "Scule și echipamente > Burghii și accesorii",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Electrolizi",
+    "slug": "consumabile-pentru-sudura",
+    "path": "Scule și echipamente > Consumabile pentru sudură",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Substraturi pentru laminat",
+    "slug": "laminat",
+    "path": "Pardoseli > Laminat",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Caramidă",
+    "slug": "caramida",
+    "path": "Zidărie și materiale structurale > Cărămidă",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Bandă gips carton",
+    "slug": "placi-de-gips-carton",
+    "path": "Gips-carton și sisteme interioare > Plăci de gips-carton",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Membrană pentru fundament",
+    "slug": "materiale-hidroizolante",
+    "path": "Hidroizolație și chimie pentru construcții > Materiale hidroizolante",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Adeziv pentru fibră de sticlă",
+    "slug": "sisteme-termoizolante-pentru-fatade",
+    "path": "Fațade și sisteme exterioare > Sisteme termoizolante pentru fațade",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Pigmenți",
+    "slug": "pigmenti-si-coloranti",
+    "path": "Vopsele și finisaje > Pigmenți și coloranți",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Diblu cu șurub cap hexagonal",
+    "slug": "dibluri-si-ancore",
+    "path": "Elemente de fixare > Dibluri și ancore",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Nituri din aluminiu",
+    "slug": "cuie-si-nituri",
+    "path": "Elemente de fixare > Cuie și nituri",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Rulouri",
+    "slug": "accesorii-pentru-zugravit",
+    "path": "Scule și echipamente > Accesorii pentru zugrăvit",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Vase pentru zugrăvit",
+    "slug": "accesorii-pentru-zugravit",
+    "path": "Scule și echipamente > Accesorii pentru zugrăvit",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Capsatoare",
+    "slug": "scule-de-mana",
+    "path": "Scule și echipamente > Scule de mână",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "PVA",
+    "slug": "adezivi-pentru-constructii",
+    "path": "Beton, ciment și mortare > Adezivi pentru construcții",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Diluant",
+    "slug": "diluanti",
+    "path": "Vopsele și finisaje > Diluanți",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Șurubelnițe",
+    "slug": "scule-de-mana",
+    "path": "Scule și echipamente > Scule de mână",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Plasă sudată zincată",
+    "slug": "tabla-si-plasa-metalica",
+    "path": "Profile metalice și schelete > Tablă și plasă metalică",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Recuperator de aer (Marley)",
+    "slug": "accesorii-acoperis",
+    "path": "Acoperișuri > Accesorii acoperiș",
+    "confidence": 0.86
+  },
+  {
+    "supplier": "Polistiren extrudat",
+    "slug": "polistiren",
+    "path": "Termoizolare și fonoizolare > Polistiren",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Plasă din fibră de sticlă",
+    "slug": "accesorii-termoizolare",
+    "path": "Termoizolare și fonoizolare > Accesorii termoizolare",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Lățimea 125 mm",
+    "slug": "accesorii-acoperis",
+    "path": "Acoperișuri > Accesorii acoperiș",
+    "confidence": 0.86
+  },
+  {
+    "supplier": "Element de stopare ușă",
+    "slug": "feronerie-pentru-usi",
+    "path": "Uși și ferestre > Feronerie pentru uși",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Perii",
+    "slug": "accesorii-pentru-zugravit",
+    "path": "Scule și echipamente > Accesorii pentru zugrăvit",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Pistoale pentru montare",
+    "slug": "scule-de-mana",
+    "path": "Scule și echipamente > Scule de mână",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Lame, pânze",
+    "slug": "scule-de-taiat",
+    "path": "Scule și echipamente > Scule de tăiat",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Discuri pentru tăiat",
+    "slug": "burghii-si-accesorii",
+    "path": "Scule și echipamente > Burghii și accesorii",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Mănuși de lucru",
+    "slug": "echipament-individual-de-protectie",
+    "path": "Echipament de protecție > Echipament individual de protecție",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Plasă sudată VR-1",
+    "slug": "tabla-si-plasa-metalica",
+    "path": "Profile metalice și schelete > Tablă și plasă metalică",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Sârmă de legat",
+    "slug": "tabla-si-plasa-metalica",
+    "path": "Profile metalice și schelete > Tablă și plasă metalică",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Ciment",
+    "slug": "ciment",
+    "path": "Beton, ciment și mortare > Ciment",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Nisip în saci",
+    "slug": "agregate",
+    "path": "Beton, ciment și mortare > Agregate",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Adezivi pentru gips carton",
+    "slug": "accesorii-gips-carton",
+    "path": "Gips-carton și sisteme interioare > Accesorii gips-carton",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Chit rosturi gips carton",
+    "slug": "accesorii-gips-carton",
+    "path": "Gips-carton și sisteme interioare > Accesorii gips-carton",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Fibră de sticlă",
+    "slug": "accesorii-termoizolare",
+    "path": "Termoizolare și fonoizolare > Accesorii termoizolare",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Dibluri pentru termoizolare",
+    "slug": "accesorii-termoizolare",
+    "path": "Termoizolare și fonoizolare > Accesorii termoizolare",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Adeziv pentru tapete",
+    "slug": "adezivi-pentru-constructii",
+    "path": "Beton, ciment și mortare > Adezivi pentru construcții",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Adeziv pentru parchet",
+    "slug": "adezivi-pentru-constructii",
+    "path": "Beton, ciment și mortare > Adezivi pentru construcții",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Adeziv pentru baghete",
+    "slug": "adezivi-pentru-constructii",
+    "path": "Beton, ciment și mortare > Adezivi pentru construcții",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Sisteme pentru uși glisante",
+    "slug": "feronerie-pentru-usi",
+    "path": "Uși și ferestre > Feronerie pentru uși",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Diblu cu șurub pentru schelă",
+    "slug": "dibluri-si-ancore",
+    "path": "Elemente de fixare > Dibluri și ancore",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Peleți",
+    "slug": "combustibil-solid",
+    "path": "Amenajări exterioare > Combustibil solid",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Placă gips (Knauf)",
+    "slug": "placi-de-gips-carton",
+    "path": "Gips-carton și sisteme interioare > Plăci de gips-carton",
+    "confidence": 0.86
+  },
+  {
+    "supplier": "Vopsea decorativă",
+    "slug": "vopsele-decorative",
+    "path": "Vopsele și finisaje > Vopsele decorative",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Chimie pentru lemn",
+    "slug": "lacuri-si-protectia-lemnului",
+    "path": "Vopsele și finisaje > Lacuri și protecția lemnului",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Peliculă de protecție",
+    "slug": "solutii-de-protectie",
+    "path": "Hidroizolație și chimie pentru construcții > Soluții de protecție",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Scări",
+    "slug": "scari",
+    "path": "Scule și echipamente > Scări",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Placaj",
+    "slug": "placi-si-panouri",
+    "path": "Gips-carton și sisteme interioare > Plăci și panouri",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "PFL",
+    "slug": "placi-si-panouri",
+    "path": "Gips-carton și sisteme interioare > Plăci și panouri",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Tablă zincată",
+    "slug": "tabla-si-plasa-metalica",
+    "path": "Profile metalice și schelete > Tablă și plasă metalică",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Pietriș în saci",
+    "slug": "agregate",
+    "path": "Beton, ciment și mortare > Agregate",
+    "confidence": 0.98
+  },
+  {
+    "supplier": "Cheramzit",
+    "slug": "accesorii-termoizolare",
+    "path": "Termoizolare și fonoizolare > Accesorii termoizolare",
+    "confidence": 0.98
+  }
+]

@@ -1,0 +1,543 @@
+[
+  {
+    "name": "Albero",
+    "slug": "albero",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Albero"
+    ]
+  },
+  {
+    "name": "Arbiton",
+    "slug": "arbiton",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Arbiton"
+    ]
+  },
+  {
+    "name": "Baumit",
+    "slug": "baumit",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Baumit"
+    ]
+  },
+  {
+    "name": "Beltep",
+    "slug": "beltep",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Beltep"
+    ]
+  },
+  {
+    "name": "Betek",
+    "slug": "betek",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Betek"
+    ]
+  },
+  {
+    "name": "Bonicol P",
+    "slug": "bonicol-p",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Bonicol P"
+    ]
+  },
+  {
+    "name": "Brilliant",
+    "slug": "brilliant",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Brilliant"
+    ]
+  },
+  {
+    "name": "Casa Mare",
+    "slug": "casa-mare",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Casa Mare"
+    ]
+  },
+  {
+    "name": "Ceresit",
+    "slug": "ceresit",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Ceresit"
+    ]
+  },
+  {
+    "name": "Danke",
+    "slug": "danke",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Danke"
+    ]
+  },
+  {
+    "name": "De-Baghet",
+    "slug": "de-baghet",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "De-Baghet"
+    ]
+  },
+  {
+    "name": "Dekofloor",
+    "slug": "dekofloor",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Dekofloor"
+    ]
+  },
+  {
+    "name": "Den Braven",
+    "slug": "den-braven",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Den Braven"
+    ]
+  },
+  {
+    "name": "Deutek",
+    "slug": "deutek",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Deutek"
+    ]
+  },
+  {
+    "name": "Dufa",
+    "slug": "dufa",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Dufa"
+    ]
+  },
+  {
+    "name": "Euro As",
+    "slug": "euro-as",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Euro AS",
+      "Euro As"
+    ]
+  },
+  {
+    "name": "Eurovent",
+    "slug": "eurovent",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Eurovent"
+    ]
+  },
+  {
+    "name": "Graticon",
+    "slug": "graticon",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Graticon"
+    ]
+  },
+  {
+    "name": "Indo PVC",
+    "slug": "indo-pvc",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Indo PVC"
+    ]
+  },
+  {
+    "name": "Integra Duropolimer",
+    "slug": "integra-duropolimer",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Integra Duropolimer"
+    ]
+  },
+  {
+    "name": "Isomat",
+    "slug": "isomat",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Isomat"
+    ]
+  },
+  {
+    "name": "Isover",
+    "slug": "isover",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Isover"
+    ]
+  },
+  {
+    "name": "Izoflex",
+    "slug": "izoflex",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Izoflex"
+    ]
+  },
+  {
+    "name": "Kale",
+    "slug": "kale",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Kale"
+    ]
+  },
+  {
+    "name": "Kedr",
+    "slug": "kedr",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Kedr"
+    ]
+  },
+  {
+    "name": "Knauf",
+    "slug": "knauf",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Knauf"
+    ]
+  },
+  {
+    "name": "Kreisel",
+    "slug": "kreisel",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Kreisel"
+    ]
+  },
+  {
+    "name": "Kronotex",
+    "slug": "kronotex",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Kronotex"
+    ]
+  },
+  {
+    "name": "Lafarge",
+    "slug": "lafarge",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Lafarge"
+    ]
+  },
+  {
+    "name": "Lenko",
+    "slug": "lenko",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Lenko"
+    ]
+  },
+  {
+    "name": "Macon",
+    "slug": "macon",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Macon"
+    ]
+  },
+  {
+    "name": "Marley",
+    "slug": "marley",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Marley"
+    ]
+  },
+  {
+    "name": "Master Proff",
+    "slug": "master-proff",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Master Proff"
+    ]
+  },
+  {
+    "name": "Megapolis GL",
+    "slug": "megapolis-gl",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Megapolis GL"
+    ]
+  },
+  {
+    "name": "Modem",
+    "slug": "modem",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Modem"
+    ]
+  },
+  {
+    "name": "Mr. Modem",
+    "slug": "mr-modem",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Mr. Modem"
+    ]
+  },
+  {
+    "name": "Novii Stili",
+    "slug": "novii-stili",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Novii Stili"
+    ]
+  },
+  {
+    "name": "Oskar",
+    "slug": "oskar",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Oskar"
+    ]
+  },
+  {
+    "name": "Ozcanlar",
+    "slug": "ozcanlar",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Ozcanlar"
+    ]
+  },
+  {
+    "name": "Ozen",
+    "slug": "ozen",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Ozen"
+    ]
+  },
+  {
+    "name": "Penoboard",
+    "slug": "penoboard",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Penoboard"
+    ]
+  },
+  {
+    "name": "Penoplex",
+    "slug": "penoplex",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Penoplex"
+    ]
+  },
+  {
+    "name": "Profi Line",
+    "slug": "profi-line",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Profi Line"
+    ]
+  },
+  {
+    "name": "Proform",
+    "slug": "proform",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Proform"
+    ]
+  },
+  {
+    "name": "Profpur",
+    "slug": "profpur",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Profpur"
+    ]
+  },
+  {
+    "name": "Rigips",
+    "slug": "rigips",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Rigips"
+    ]
+  },
+  {
+    "name": "Rockwool",
+    "slug": "rockwool",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Rockwool"
+    ]
+  },
+  {
+    "name": "Siba",
+    "slug": "siba",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Siba"
+    ]
+  },
+  {
+    "name": "Sniezka",
+    "slug": "sniezka",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Sniezka"
+    ]
+  },
+  {
+    "name": "Soudal",
+    "slug": "soudal",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Soudal"
+    ]
+  },
+  {
+    "name": "Spiritus",
+    "slug": "spiritus",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Spiritus"
+    ]
+  },
+  {
+    "name": "STV",
+    "slug": "stv",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "STV"
+    ]
+  },
+  {
+    "name": "Supraten",
+    "slug": "supraten",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Supraten"
+    ]
+  },
+  {
+    "name": "Swedtex",
+    "slug": "swedtex",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Swedtex"
+    ]
+  },
+  {
+    "name": "Tehnonikoli",
+    "slug": "tehnonikoli",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Tehnonikoli"
+    ]
+  },
+  {
+    "name": "Termopur",
+    "slug": "termopur",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Termopur"
+    ]
+  },
+  {
+    "name": "Ursa",
+    "slug": "ursa",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Ursa"
+    ]
+  },
+  {
+    "name": "Vega Duropolimer",
+    "slug": "vega-duropolimer",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Vega Duropolimer"
+    ]
+  },
+  {
+    "name": "Vetonit",
+    "slug": "vetonit",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Vetonit"
+    ]
+  },
+  {
+    "name": "Ytong",
+    "slug": "ytong",
+    "status": "active",
+    "source": "import:liderconstruct-2024-05",
+    "aliases": [
+      "Ytong"
+    ]
+  }
+]

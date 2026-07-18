@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/*
+ * LiderConstruct design tokens — "precision instrument for the trade".
+ * Carbon surfaces, hi-vis yellow only on primary actions + key data,
+ * mono for measured values (SKU, dimensions, prices).
+ * Spec: docs/design/product-discovery-spec.md §4
+ */
+@theme {
+  /* Surfaces */
+  --color-bg: #0b0e12;
+  --color-surface: #14181e;
+  --color-surface-2: #1b212a;
+  --color-border: #262d38;
+  --color-blueprint: #1e2a3a;
+
+  /* Text */
+  --color-fg: #ffffff;
+  --color-muted: #a6adb8;
+  --color-faint: #6b7480;
+
+  /* Accent (hi-vis) */
+  --color-accent: #f5b118;
+  --color-accent-600: #e0a00f;
+  --color-accent-fg: #0b0e12;
+
+  /* Stock signals */
+  --color-stock-in: #3fb950;
+  --color-stock-low: #e3a008;
+  --color-stock-out: #e5534b;
+
+  /* Radius — industrial restraint, no pills */
+  --radius-control: 0.375rem; /* 6px */
+  --radius-card: 0.625rem;    /* 10px */
+  --radius-sheet: 0.875rem;   /* 14px */
+
+  /* Motion */
+  --ease-out-fast: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Fonts arrive as CSS variables from next/font (layout.tsx). */
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-archivo), var(--font-inter), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-jbmono), ui-monospace, "SF Mono", monospace;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Visible focus everywhere — accessibility floor (spec §4.7). */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-accent-fg);
+  }
+}
+
+@layer utilities {
+  /* Menu pane / overlay entrance (spec §4.4) — skipped under reduced motion. */
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes lc-fade-slide {
+      from {
+        opacity: 0;
+        transform: translateY(4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .menu-pane {
+      animation: lc-fade-slide 140ms var(--ease-out-fast);
+    }
+    @keyframes lc-slide-left {
+      from {
+        opacity: 0;
+        transform: translateX(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    .drawer-pane {
+      animation: lc-slide-left 180ms var(--ease-out-fast);
+    }
+  }
+
+  /* Tape-measure divider — the structural motif (spec §0). */
+  .tick-rule {
+    position: relative;
+    height: 8px;
+    border-bottom: 1px solid var(--color-border);
+    background-image: repeating-linear-gradient(
+      to right,
+      transparent,
+      transparent calc(25% - 1px),
+      var(--color-border) calc(25% - 1px),
+      var(--color-border) 25%
+    );
+    background-size: 100% 8px;
+    background-repeat: no-repeat;
+  }
+}
