@@ -106,9 +106,28 @@ schema manually.
 2. **Create the extensions** (§3).
 3. **Create the application** from the Git repo; set the environment variables
    (§2). Configure the build (§6).
-4. **Deploy.** On first boot the app connects and Payload provisions its schema.
-5. **Create the first admin user** at `https<your-domain>/admin`.
-6. **Seed reference data**, then **import the catalog** (§5).
+4. **Deploy.**
+5. **Run database migrations** against the deployed app (this creates every
+   table — `users`, `units`, all collections/globals):
+
+   ```bash
+   pnpm migrate
+   ```
+
+   The repo ships an initial migration under `src/migrations`. In production
+   (`NODE_ENV=production`) Payload runs migrations rather than auto-creating the
+   schema, so this step is **required** on a fresh database — without it the app
+   starts against an empty database and fails because the tables do not exist.
+   Consider wiring `pnpm migrate` as a release/pre-start command in Coolify so it
+   runs automatically on each deploy (migrations are idempotent and tracked in
+   the `payload_migrations` table; already-applied ones are skipped).
+6. **Create the first admin user** at `https://<your-domain>/admin`.
+7. **Seed reference data**, then **import the catalog** (§5).
+
+> **When the schema changes later:** generate a new migration locally with
+> `pnpm migrate:create <name>`, commit it, and it will be applied by `pnpm
+> migrate` on the next deploy. Never edit a committed migration after it has run
+> in production.
 
 ---
 

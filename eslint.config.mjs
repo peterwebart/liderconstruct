@@ -14,7 +14,7 @@ const eslintConfig = [
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
     },
   },
-  { ignores: ['.next/**', 'node_modules/**', 'src/app/(payload)/admin/importMap.js'] },
+  { ignores: ['.next/**', 'node_modules/**', 'src/app/(payload)/admin/importMap.js', 'src/migrations/**'] },
 ]
 
 export default eslintConfig
