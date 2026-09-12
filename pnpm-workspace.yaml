@@ -1,0 +1,22 @@
+# pnpm configuration (pnpm 10+ reads settings from this file).
+# NOTE: intentionally no `packages:` field — this is a single-package repo, not
+# a workspace. That requires pnpm >= 10, which is why package.json pins
+# `packageManager: pnpm@11.6.0`.
+
+# Native/prebuilt dependencies whose install scripts we explicitly allow.
+# pnpm 11 refuses to install (exit 1, ERR_PNPM_IGNORED_BUILDS) while any
+# package with a build script is undecided — including in CI — so these must be
+# answered explicitly in the repo, not interactively.
+#   sharp         -> image processing used by Payload/Next
+#   esbuild       -> bundler used by tooling
+#   unrs-resolver -> resolver used by eslint tooling
+allowBuilds:
+  sharp: true
+  esbuild: true
+  unrs-resolver: true
+
+# Equivalent allowlist under the pnpm 10 name, kept for compatibility.
+onlyBuiltDependencies:
+  - sharp
+  - esbuild
+  - unrs-resolver

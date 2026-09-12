@@ -1,0 +1,47 @@
+# =============================================================================
+# Deterministic build environment for Coolify / Nixpacks.
+# =============================================================================
+# WHY THIS FILE EXISTS
+#
+# Nixpacks' Node provider installs a HARD-PINNED, old Corepack
+# (`npm install -g corepack@0.24.1`) whenever package.json has a
+# `packageManager` field. Corepack 0.24.1 (Nov 2023) predates pnpm 11 and
+# launches the package manager through Node's `vm` module without an
+# `importModuleDynamically` callback. pnpm 11's bundle uses dynamic import(),
+# so Node aborts with:
+#
+#     TypeError [ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING]
+#
+# before a single dependency is installed. This is NOT a Node 22 problem and
+# NOT a pnpm problem — reproduced locally on Node 22 with corepack 0.24.1, and
+# fixed on the SAME Node and the SAME pnpm by upgrading Corepack alone.
+#
+# The install phase below is therefore explicit: upgrade Corepack to a version
+# that can run pnpm 11, activate the exact pnpm pinned in package.json
+# (`packageManager: pnpm@11.6.0`), then install from the committed lockfile.
+# Every version is pinned, so builds don't depend on what Nixpacks happens to
+# choose.
+# =============================================================================
+
+providers = ["node"]
+
+[variables]
+  # Node 22 LTS. Satisfies engines (">=20.9.0") and is the version Coolify
+  # already selects; verified working with the pnpm/Corepack pair below.
+  NIXPACKS_NODE_VERSION = "22"
+
+[phases.install]
+  # Replaces the provider's default install commands (which would run the
+  # incompatible corepack@0.24.1).
+  cmds = [
+    "npm install -g corepack@0.36.0",
+    "corepack enable",
+    "corepack prepare pnpm@11.6.0 --activate",
+    "pnpm install --frozen-lockfile",
+  ]
+
+[phases.build]
+  cmds = ["pnpm build"]
+
+[start]
+  cmd = "pnpm start"
