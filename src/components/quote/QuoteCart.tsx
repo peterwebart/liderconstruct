@@ -1,7 +1,7 @@
 'use client'
 
 import { CheckCircle2, ClipboardList, Trash2, X } from 'lucide-react'
-import Link from 'next/link'
+import { LocaleLink as Link } from '@/components/nav/LocaleLink'
 import React, { useEffect, useState } from 'react'
 
 import { Button, EmptyState, IconButton, PriceDisplay, QuantityStepper } from '@/components/ui'

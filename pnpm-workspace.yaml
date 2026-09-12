@@ -1,0 +1,12 @@
+allowBuilds:
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
+# pnpm configuration (pnpm 10+ reads settings from this file).
+# NOTE: intentionally no `packages:` field — this is a single-package repo,
+# not a workspace. That requires pnpm >= 10; the packageManager field in
+# package.json pins pnpm 11 so builders (Nixpacks/corepack) select it.
+onlyBuiltDependencies:
+  - sharp
+  - esbuild
+  - unrs-resolver

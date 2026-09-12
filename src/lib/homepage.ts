@@ -122,6 +122,7 @@ const loadHomepageData = async (locale: 'ro' | 'ru'): Promise<HomepageData> => {
             unit: h.unit ?? null,
             imageUrl: h.primaryImageUrl ?? null,
             variationCount: h.variationCount,
+            variations: h.variations ?? [],
             defaultVariationSku: h.defaultVariationSku ?? null,
             defaultVariationLabel: h.defaultVariationLabel ?? null,
           })),

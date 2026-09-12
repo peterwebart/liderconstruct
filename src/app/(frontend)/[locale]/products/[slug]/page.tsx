@@ -4,24 +4,25 @@ import React from 'react'
 
 import { BuyPanel } from '@/components/product/BuyPanel'
 import { ProductGallery } from '@/components/product/ProductGallery'
+import { ProductSeoContent } from '@/components/product/ProductSeoContent'
 import { ProductTabs } from '@/components/product/ProductTabs'
 import { RelatedProducts } from '@/components/product/RelatedProducts'
 import { RichTextBlock } from '@/components/product/RichTextBlock'
 import { SpecificationTable } from '@/components/product/SpecificationTable'
 import { Breadcrumbs } from '@/components/ui'
 import { getProductCards, getProductPageData } from '@/lib/catalog'
-import { DELIVERY_CHISINAU_MDL } from '@/lib/constants'
-import { buildSpecGroups } from '@/lib/specs'
+import { toLocale } from '@/lib/i18n'
+import { buildIdentityGroup, buildSpecGroups } from '@/lib/specs'
 
 export const revalidate = 300
 
 interface Props {
-  params: Promise<{ slug: string }>
+  params: Promise<{ locale: string; slug: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
-  const data = await getProductPageData(slug)
+  const { locale, slug } = await params
+  const data = await getProductPageData(slug, toLocale(locale))
   if (!data) return { title: 'Produs' }
   return {
     title: data.seo.metaTitle || data.title,
@@ -34,18 +35,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 /** Product detail (spec §5.5): decision panel + registry-driven spec sheet. */
 export default async function ProductPage({ params }: Props): Promise<React.JSX.Element> {
-  const { slug } = await params
-  const data = await getProductPageData(slug)
+  const { locale: raw, slug } = await params
+  const locale = toLocale(raw)
+  const data = await getProductPageData(slug, locale)
   if (!data) notFound()
 
-  const specGroups = buildSpecGroups(data.attributes, data.registry)
+  // Identity facts (brand, producer, origin, unit, code) live on the Product
+  // record rather than the attribute registry — they were fetched but never
+  // shown. They now lead the spec sheet.
+  const identityGroup = buildIdentityGroup({
+    brand: data.brand?.name,
+    manufacturer: data.manufacturer,
+    countryOfOrigin: data.countryOfOrigin,
+    applicationArea: data.applicationArea,
+    unit: data.unitSymbol,
+    sku: data.legacyKey,
+    categoryPath: data.trail.map((t) => t.title).join(' › ') || null,
+  })
+  const specGroups = [...(identityGroup ? [identityGroup] : []), ...buildSpecGroups(data.attributes, data.registry)]
   const priced = data.variations.filter((v) => !v.priceOnRequest && v.price != null).map((v) => v.price as number)
   const inStock = data.variations.some((v) => v.stockStatus !== 'out_of_stock')
 
   const rails = await Promise.all(
     data.rails.slice(0, 3).map(async (rail) => ({
       title: rail.title,
-      items: await getProductCards(rail.ids.slice(0, 8)),
+      items: await getProductCards(rail.ids.slice(0, 8), locale),
     })),
   )
 
@@ -110,9 +124,22 @@ export default async function ProductPage({ params }: Props): Promise<React.JSX.
         />
       </div>
 
+      {/* Specificații first and open by default — the spec sheet is what drives
+          a purchase decision. Both panels are server-rendered and merely
+          hidden, so Description stays crawlable (SEO requirement). */}
       <ProductTabs
         className="mt-10"
         tabs={[
+          {
+            id: 'specificatii',
+            label: 'Specificații',
+            content:
+              specGroups.length > 0 ? (
+                <SpecificationTable groups={specGroups} />
+              ) : (
+                <p className="text-sm text-faint">Specificațiile vor fi completate în curând.</p>
+              ),
+          },
           {
             id: 'descriere',
             label: 'Descriere',
@@ -126,38 +153,11 @@ export default async function ProductPage({ params }: Props): Promise<React.JSX.
             ),
           },
           {
-            id: 'specificatii',
-            label: 'Specificații',
-            content:
-              specGroups.length > 0 ? (
-                <SpecificationTable groups={specGroups} />
-              ) : (
-                <p className="text-sm text-faint">Specificațiile vor fi completate în curând.</p>
-              ),
-          },
-          {
             id: 'documente',
             label: 'Documente',
             disabled: true,
             disabledHint: 'Fișele tehnice — în curând',
             content: null,
-          },
-          {
-            id: 'livrare',
-            label: 'Livrare',
-            content: (
-              <div className="max-w-3xl space-y-2 text-sm text-muted">
-                <p>
-                  Livrare în Chișinău —{' '}
-                  <span className="font-mono text-fg">{DELIVERY_CHISINAU_MDL} lei</span>; în alte
-                  localități, costul se stabilește la înțelegere, în funcție de volum și distanță.
-                </p>
-                <p>
-                  Fără plată online: după trimiterea comenzii, un operator vă sună pentru a confirma
-                  disponibilitatea, prețul final și intervalul de livrare.
-                </p>
-              </div>
-            ),
           },
         ]}
       />
@@ -177,6 +177,26 @@ export default async function ProductPage({ params }: Props): Promise<React.JSX.
           </div>
         </section>
       )}
+
+      <ProductSeoContent
+        className="mt-10"
+        input={{
+          title: data.title,
+          brand: data.brand?.name,
+          manufacturer: data.manufacturer,
+          countryOfOrigin: data.countryOfOrigin,
+          applicationArea: data.applicationArea,
+          categoryTitle: data.trail.at(-1)?.title ?? null,
+          sectionTitle: data.trail[0]?.title ?? null,
+          unit: data.unitSymbol,
+          priceMin: priced.length > 0 ? Math.min(...priced) : null,
+          variationCount: data.variations.length,
+          keySpecs: specGroups
+            .flatMap((g) => (g.key === 'identity' ? [] : g.rows))
+            .slice(0, 3)
+            .map((r) => ({ label: r.label, value: r.value })),
+        }}
+      />
 
       {rails.length > 0 && (
         <div className="mt-12 space-y-10">

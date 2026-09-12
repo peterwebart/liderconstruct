@@ -1,14 +1,16 @@
 'use client'
 
-import { icons, LayoutGrid, Play, Search } from 'lucide-react'
+import { icons, LayoutGrid, Play } from 'lucide-react'
 import Image from 'next/image'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { LocaleLink as Link } from '@/components/nav/LocaleLink'
+import { useParams } from 'next/navigation'
 import React, { useMemo, useState } from 'react'
 
+import { SmartSearch } from '@/components/search/SmartSearch'
 import { cn } from '@/lib/cn'
+import { toLocale } from '@/lib/i18n'
 import { formatCount } from '@/lib/format'
-import type { NavSection, PopularTerm, TopBrand } from '@/lib/navigation'
+import type { NavSection, PopularTerm } from '@/lib/navigation'
 
 /**
  * Homepage hero — the "first screen" (matches the approved design):
@@ -19,26 +21,18 @@ import type { NavSection, PopularTerm, TopBrand } from '@/lib/navigation'
  */
 export function HomeHero({
   sections,
-  brands,
   popular,
   stats,
 }: {
   sections: NavSection[]
-  brands: TopBrand[]
   popular: PopularTerm[]
   stats: { products: number; brands: number }
 }): React.JSX.Element {
-  const router = useRouter()
-  const [term, setTerm] = useState('')
+  const params = useParams()
+  const locale = toLocale(params?.locale)
   const [activeSection, setActiveSection] = useState<number | null>(null)
 
   const tiles = useMemo(() => sections.slice(0, 8), [sections])
-
-  const submitSearch = (e: React.FormEvent): void => {
-    e.preventDefault()
-    const q = term.trim()
-    router.push(q ? `/search?q=${encodeURIComponent(q)}` : '/search')
-  }
 
   const productsLabel = stats.products > 0 ? `${formatCount(stats.products)}+` : '35,000+'
   const brandsLabel = stats.brands > 0 ? `${formatCount(stats.brands)}+` : '500+'
@@ -58,7 +52,7 @@ export function HomeHero({
         <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent" />
       </div>
 
-      <div className="mx-auto grid max-w-[1320px] gap-8 px-4 pb-8 pt-8 md:px-6 lg:grid-cols-[1fr_290px] lg:pb-12 lg:pt-12">
+      <div className="mx-auto grid max-w-[1320px] gap-8 px-4 pb-8 pt-8 md:px-6 lg:pb-12 lg:pt-12">
         <div className="max-w-2xl">
           <h1 className="font-display text-5xl font-extrabold uppercase leading-[0.92] tracking-tight text-fg md:text-6xl lg:text-7xl">
             Construiește mai mult.
@@ -103,28 +97,26 @@ export function HomeHero({
               </div>
             )}
 
-            <form
-              onSubmit={submitSearch}
-              className="mt-3 flex overflow-hidden rounded-control border border-border bg-surface shadow-lg"
-            >
-              <span className="flex items-center pl-3 text-faint">
-                <Search className="size-4" aria-hidden />
-              </span>
-              <input
-                value={term}
-                onChange={(e) => setTerm(e.target.value)}
+            {/* One shared search system (SmartSearch + /api/search/suggest) —
+                the hero must not ship a second implementation. */}
+            <div className="mt-3">
+              <SmartSearch
+                locale={locale}
+                popular={popular}
+                size="lg"
                 placeholder="Caută după nume, SKU, brand sau cuvânt cheie…"
-                aria-label="Caută în catalog"
-                className="h-12 w-full bg-transparent px-3 text-sm text-fg outline-none placeholder:text-faint"
               />
-              <button
-                type="submit"
-                className="flex h-12 shrink-0 items-center gap-2 bg-accent px-4 text-sm font-semibold text-accent-fg transition-colors hover:bg-accent-600 sm:px-6"
-              >
-                <Search className="size-4" aria-hidden />
-                <span className="hidden sm:inline">Caută</span>
-              </button>
-            </form>
+            </div>
+
+            <Link href="/despre" className="group mt-4 inline-flex items-center gap-3 text-left">
+              <span className="flex size-11 items-center justify-center rounded-full bg-accent text-accent-fg transition-transform group-hover:scale-105">
+                <Play className="size-5 translate-x-0.5 fill-current" aria-hidden />
+              </span>
+              <span>
+                <span className="block text-sm font-semibold text-fg">Vezi videoclipul</span>
+                <span className="block text-xs text-muted">Vezi cum susținem proiectele tale</span>
+              </span>
+            </Link>
 
             {popular.length > 0 && (
               <div className="mt-3 flex flex-wrap items-center gap-1.5">
@@ -143,49 +135,6 @@ export function HomeHero({
           </div>
         </div>
 
-        <div className="hidden flex-col gap-4 lg:flex">
-          {brands.length > 0 && (
-            <aside className="self-start rounded-card border border-border bg-surface/85 backdrop-blur">
-              <div className="flex items-center justify-between border-b border-border px-4 py-3">
-                <span className="text-xs font-semibold uppercase tracking-widest text-fg">Branduri de top</span>
-                <Link href="/brands" className="text-xs text-accent hover:underline">
-                  Vezi toate
-                </Link>
-              </div>
-              <ul>
-                {brands.slice(0, 6).map((b) => (
-                  <li key={b.id}>
-                    <Link
-                      href={b.href}
-                      className="flex items-center justify-between gap-2 border-b border-border/60 px-4 py-3 text-sm text-muted transition-colors last:border-0 hover:bg-surface-2 hover:text-fg"
-                    >
-                      <span className="font-medium tracking-wide">{b.name.toUpperCase()}</span>
-                      <span className="font-mono text-[11px] text-faint">{formatCount(b.count)}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <div className="p-3">
-                <Link
-                  href="/brands"
-                  className="block rounded-control border border-border py-2 text-center text-xs font-medium text-fg transition-colors hover:border-accent"
-                >
-                  Vezi toate brandurile
-                </Link>
-              </div>
-            </aside>
-          )}
-
-          <Link href="/despre" className="group flex items-center gap-3 self-start rounded-card px-1 py-1 text-left">
-            <span className="flex size-11 items-center justify-center rounded-full bg-accent text-accent-fg transition-transform group-hover:scale-105">
-              <Play className="size-5 translate-x-0.5 fill-current" aria-hidden />
-            </span>
-            <span>
-              <span className="block text-sm font-semibold text-fg">Vezi videoclipul</span>
-              <span className="block text-xs text-muted">Vezi cum susținem proiectele tale</span>
-            </span>
-          </Link>
-        </div>
       </div>
 
       <div className="border-y border-border bg-surface/80 backdrop-blur">

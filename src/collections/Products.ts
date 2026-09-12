@@ -147,6 +147,15 @@ export const Products: CollectionConfig = {
               admin: { description: 'Popularity signal used by search ranking.' },
             },
             {
+              name: 'displayOrder',
+              type: 'number',
+              index: true,
+              admin: {
+                description:
+                  'Manual catalog position for the storefront "Recomandate" sort (default). Lower numbers appear first (1, 2, 3…); products left empty fall after ordered ones, then sort by popularity and name. Applies globally, in every category and listing. Admin-owned: the catalog importer never changes this value.',
+              },
+            },
+            {
               name: 'faqs',
               type: 'array',
               labels: { singular: 'FAQ', plural: 'FAQs' },

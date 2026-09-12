@@ -1,5 +1,5 @@
 import { ArrowRight } from 'lucide-react'
-import Link from 'next/link'
+import { LocaleLink as Link } from '@/components/nav/LocaleLink'
 import React from 'react'
 
 import { ProductCard } from '@/components/catalog/ProductCard'

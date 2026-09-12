@@ -2,7 +2,7 @@
 
 import { ArrowRight, Check, Package, Plus } from 'lucide-react'
 import Image from 'next/image'
-import Link from 'next/link'
+import { LocaleLink as Link } from '@/components/nav/LocaleLink'
 import React from 'react'
 
 import { PriceDisplay, Skeleton, StockBadge } from '@/components/ui'
@@ -13,7 +13,11 @@ import { useQuickAdd } from './useQuickAdd'
 
 /** Dense list row — the ProductList item (spec §3). */
 export function ProductRow({ product }: { product: ProductCardData }): React.JSX.Element {
-  const { canQuickAdd, added, add } = useQuickAdd(product)
+  const { added, add } = useQuickAdd(product)
+  // A row adds the cheapest variation (qty 1); multi-variation products link
+  // to the product page where the full picker lives.
+  const single = (product.variations ?? []).length === 1 ? product.variations[0] : null
+  const canQuickAdd = single !== null
   const href = `/products/${product.slug}`
 
   return (
@@ -50,7 +54,7 @@ export function ProductRow({ product }: { product: ProductCardData }): React.JSX
       {canQuickAdd ? (
         <button
           type="button"
-          onClick={add}
+          onClick={() => add(single, 1)}
           aria-label={`Adaugă ${product.title} în comandă`}
           className={cn(
             'relative z-[2] shrink-0 rounded-control p-2 transition-colors duration-150',

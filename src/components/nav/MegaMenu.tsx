@@ -1,7 +1,8 @@
 'use client'
 
 import { ArrowRight, ChevronDown, LayoutGrid } from 'lucide-react'
-import Link from 'next/link'
+import { LocaleLink as Link } from '@/components/nav/LocaleLink'
+import { createPortal } from 'react-dom'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import { cn } from '@/lib/cn'
@@ -41,7 +42,12 @@ export function MegaMenu({
   useEffect(() => {
     if (!open) return
     const onDown = (e: MouseEvent): void => {
-      if (rootRef.current && !rootRef.current.contains(e.target as Node)) close()
+      // The pane is portalled to <body>, so it is NOT inside rootRef — both
+      // the trigger root and the pane must count as "inside".
+      const target = e.target as Node
+      const insideTrigger = rootRef.current?.contains(target) ?? false
+      const insidePanel = panelRef.current?.contains(target) ?? false
+      if (!insideTrigger && !insidePanel) close()
     }
     const onKey = (e: KeyboardEvent): void => {
       if (e.key === 'Escape') close(true)
@@ -96,6 +102,28 @@ export function MegaMenu({
     }
   }
 
+  // The pane is rendered in a PORTAL and positioned from the trigger's rect.
+  // Two real hazards make this necessary rather than cosmetic: the header sets
+  // `backdrop-blur`, which creates a stacking context that would trap a nested
+  // pane beneath later siblings, and any ancestor with `overflow-hidden` (the
+  // hero banner) would clip it. A body-level portal escapes both.
+  const [anchor, setAnchor] = useState<{ top: number; left: number; width: number } | null>(null)
+
+  useEffect(() => {
+    if (!open) return
+    const measure = (): void => {
+      const r = triggerRef.current?.getBoundingClientRect()
+      if (r) setAnchor({ top: r.bottom + 8, left: r.left, width: r.width })
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    window.addEventListener('scroll', measure, { passive: true })
+    return () => {
+      window.removeEventListener('resize', measure)
+      window.removeEventListener('scroll', measure)
+    }
+  }, [open])
+
   const featuredCategory = active?.children.find((c) => c.featured) ?? active?.children[0]
   const topBrand = featuredBrands[activeIdx % Math.max(featuredBrands.length, 1)]
 
@@ -117,13 +145,20 @@ export function MegaMenu({
         <ChevronDown className={cn('size-3.5 transition-transform duration-150', open && 'rotate-180')} aria-hidden />
       </button>
 
-      {open && (
-        <div
-          ref={panelRef}
-          role="menu"
-          aria-label={label}
-          className="menu-pane absolute left-0 top-full z-50 mt-2 w-[720px] max-w-[86vw] overflow-hidden rounded-card border border-border bg-surface shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
-        >
+      {open &&
+        anchor &&
+        typeof document !== 'undefined' &&
+        createPortal(
+          <div
+            ref={panelRef}
+            role="menu"
+            aria-label={label}
+            style={{
+              top: anchor.top,
+              left: Math.max(8, Math.min(anchor.left, (typeof window !== 'undefined' ? window.innerWidth : 1280) - 736)),
+            }}
+            className="menu-pane fixed z-[60] w-[720px] max-w-[calc(100vw-16px)] overflow-hidden rounded-card border border-border bg-surface shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
+          >
           {sections.length === 0 ? (
             <p className="p-6 text-sm text-faint">Taxonomia se încarcă după primul import.</p>
           ) : (
@@ -243,8 +278,9 @@ export function MegaMenu({
               )}
             </div>
           )}
-        </div>
-      )}
+          </div>,
+          document.body,
+        )}
     </div>
   )
 }

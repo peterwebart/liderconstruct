@@ -4,6 +4,7 @@ import { getPayload } from 'payload'
 
 import type { Category } from '@/payload-types'
 import { getSearchService } from '@/services/search'
+import { CARD_VARIATION_LIMIT } from '@/services/search/PostgresSearchService'
 import type { FacetsResult, SearchQuery } from '@/services/search/types'
 
 import type { ProductCardData } from './catalog-types'
@@ -88,6 +89,7 @@ export async function getCatalogPage(
         unit: h.unit ?? null,
         imageUrl: h.primaryImageUrl ?? null,
         variationCount: h.variationCount,
+        variations: h.variations ?? [],
         defaultVariationSku: h.defaultVariationSku ?? null,
         defaultVariationLabel: h.defaultVariationLabel ?? null,
       }),
@@ -223,12 +225,28 @@ const loadProductCards = async (ids: number[], locale: 'ro' | 'ru'): Promise<Pro
     const rank: Record<Stock, number> = { in_stock: 2, low_stock: 1, out_of_stock: 0 }
     const agg = new Map<
       number,
-      { priceMin: number | null; stock: Stock; count: number; sku: string | null; label: string | null }
+      {
+        priceMin: number | null
+        stock: Stock
+        count: number
+        sku: string | null
+        label: string | null
+        list: { sku: string; label: string | null; price: number | null; priceOnRequest: boolean; stockStatus: Stock }[]
+      }
     >()
     for (const v of vars.docs) {
       const pid = typeof v.product === 'number' ? v.product : v.product.id
-      const a = agg.get(pid) ?? { priceMin: null, stock: 'out_of_stock' as Stock, count: 0, sku: null, label: null }
+      const a =
+        agg.get(pid) ??
+        { priceMin: null, stock: 'out_of_stock' as Stock, count: 0, sku: null, label: null, list: [] }
       a.count += 1
+      a.list.push({
+        sku: v.sku,
+        label: v.label ?? null,
+        price: typeof v.price === 'number' && !v.priceOnRequest ? v.price : null,
+        priceOnRequest: Boolean(v.priceOnRequest) || v.price == null,
+        stockStatus: (v.stockStatus ?? 'out_of_stock') as Stock,
+      })
       if (a.count === 1) {
         a.sku = v.sku
         a.label = v.label ?? null
@@ -247,7 +265,8 @@ const loadProductCards = async (ids: number[], locale: 'ro' | 'ru'): Promise<Pro
     return ids.flatMap((id): ProductCardData[] => {
       const p = byId.get(id)
       if (!p) return []
-      const a = agg.get(id) ?? { priceMin: null, stock: 'out_of_stock' as Stock, count: 0, sku: null, label: null }
+      const a =
+        agg.get(id) ?? { priceMin: null, stock: 'out_of_stock' as Stock, count: 0, sku: null, label: null, list: [] }
       const bid = typeof p.brand === 'number' ? p.brand : p.brand?.id
       const uid = typeof p.unit === 'number' ? p.unit : p.unit?.id
       return [
@@ -263,6 +282,13 @@ const loadProductCards = async (ids: number[], locale: 'ro' | 'ru'): Promise<Pro
           unit: uid != null ? (unitSymbol.get(uid) ?? null) : null,
           imageUrl: null,
           variationCount: a.count,
+          variations: [...a.list]
+            .sort(
+              (x, y) =>
+                (x.price ?? Number.POSITIVE_INFINITY) - (y.price ?? Number.POSITIVE_INFINITY) ||
+                String(x.label ?? x.sku).localeCompare(String(y.label ?? y.sku), 'ro'),
+            )
+            .slice(0, CARD_VARIATION_LIMIT),
           defaultVariationSku: a.count === 1 ? a.sku : null,
           defaultVariationLabel: a.count === 1 ? a.label : null,
         },
@@ -302,6 +328,9 @@ export interface ProductPageData {
   title: string
   legacyKey: string | null
   brand: { name: string; slug: string } | null
+  manufacturer: string | null
+  countryOfOrigin: string | null
+  applicationArea: string | null
   unitSymbol: string | null
   trail: { title: string; href: string }[]
   attributes: { key: string; value: string }[]
@@ -339,7 +368,7 @@ const loadProductPageData = async (slug: string, locale: 'ro' | 'ru'): Promise<P
     const doc = found.docs[0]
     if (!doc) return null
 
-    const [variations, registry, brands, units, categories] = await Promise.all([
+    const [variations, registry, brands, units, categories, manufacturers] = await Promise.all([
       payload.find({
         collection: 'variations',
         where: { product: { equals: doc.id } },
@@ -353,12 +382,15 @@ const loadProductPageData = async (slug: string, locale: 'ro' | 'ru'): Promise<P
       payload.find({ collection: 'brands', limit: 300, pagination: false, depth: 0 }),
       payload.find({ collection: 'units', limit: 50, pagination: false, depth: 0 }),
       payload.find({ collection: 'categories', limit: 500, pagination: false, depth: 0, locale }),
+      payload.find({ collection: 'manufacturers', limit: 500, pagination: false, depth: 0 }),
     ])
 
     const bid = typeof doc.brand === 'number' ? doc.brand : doc.brand?.id
     const brandDoc = bid != null ? brands.docs.find((b) => b.id === bid) : undefined
     const uid = typeof doc.unit === 'number' ? doc.unit : doc.unit?.id
     const unitDoc = uid != null ? units.docs.find((u) => u.id === uid) : undefined
+    const mid = typeof doc.manufacturer === 'number' ? doc.manufacturer : doc.manufacturer?.id
+    const manufacturerDoc = mid != null ? manufacturers.docs.find((m) => m.id === mid) : undefined
 
     const byId = new Map(categories.docs.map((c) => [c.id, c]))
     const cid = typeof doc.category === 'number' ? doc.category : doc.category?.id
@@ -386,6 +418,9 @@ const loadProductPageData = async (slug: string, locale: 'ro' | 'ru'): Promise<P
       title: doc.title ?? '',
       legacyKey: doc.legacyKey ?? null,
       brand: brandDoc ? { name: brandDoc.name, slug: brandDoc.slug } : null,
+      manufacturer: manufacturerDoc?.name ?? null,
+      countryOfOrigin: doc.countryOfOrigin ?? null,
+      applicationArea: doc.applicationArea ?? null,
       unitSymbol: unitDoc ? unitDoc.symbol || unitDoc.label || unitDoc.code : null,
       trail,
       attributes: (doc.attributes ?? []).map((a) => ({ key: a.key, value: a.value })),

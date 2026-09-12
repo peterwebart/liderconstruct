@@ -182,22 +182,36 @@ You need exactly one build strategy.
 
 ### Option A — Nixpacks (Coolify default)
 
-No Dockerfile needed. Two things make a pnpm build reproducible on Nixpacks:
+No Dockerfile needed.
 
-1. **Pin the package manager.** Add a `packageManager` field to `package.json`
-   so corepack selects the right pnpm (replace with your pnpm version):
+**The 2026-07-18 build failure, diagnosed and fixed.** The build log shows
+Nixpacks defaulting to **pnpm 9.15.9** (no `packageManager` field existed to
+tell it otherwise). pnpm 9 requires a `packages:` field in
+`pnpm-workspace.yaml`; this repo uses that file only for pnpm-10+ style
+settings (`onlyBuiltDependencies`), so pnpm 9 aborts instantly with
+`ERROR  packages field missing or empty` — reproduced byte-for-byte locally
+with `pnpm@9.15.9` against this repo. The fix is committed:
+`package.json` now pins `"packageManager": "pnpm@11.6.0"`, which Nixpacks and
+corepack use to fetch the exact pnpm; `pnpm install --frozen-lockfile` was then
+verified passing on a clean checkout with that version. And even if an old
+pnpm is somehow invoked explicitly, it fails loudly at second zero on the
+workspace file rather than producing a mismatched install — the failure mode
+cannot silently return.
 
-   ```json
-   "packageManager": "pnpm@9.12.3"
-   ```
+Operational notes:
 
-   Without this, Nixpacks may use a pnpm version that disagrees with
-   `pnpm-lock.yaml` and fails `pnpm install --frozen-lockfile` (a common cause of
-   the "packages field / lockfile" install error).
-
-2. **Keep the lockfile in sync.** If you change dependencies, run `pnpm install`
-   locally and commit the updated `pnpm-lock.yaml`. A stale lockfile fails a
-   frozen install.
+1. **Keep the lockfile in sync.** After dependency changes, run `pnpm install`
+   locally and commit `pnpm-lock.yaml`; a stale lockfile fails a frozen install.
+2. **If you bump pnpm locally**, update the `packageManager` field in the same
+   commit.
+3. **Expected notice, not an error:** the install step may print
+   `Ignored build scripts: esbuild…, sharp…, unrs-resolver…`. This is
+   informational — sharp/esbuild ship prebuilt binaries as optional packages
+   (verified working: `sharp` loads libvips, `tsx` transforms TS after a clean
+   frozen install). Do not "fix" it by enabling arbitrary build scripts.
+4. **Fallback** (should not be needed): if a builder still selects an old pnpm,
+   override the install command with
+   `corepack enable && corepack prepare pnpm@11.6.0 --activate && pnpm install --frozen-lockfile`.
 
 Set the start command to `pnpm start` and the build to `pnpm build` if Coolify
 does not detect them automatically. Ensure `NEXT_PUBLIC_*` build-time variables

@@ -4,9 +4,10 @@ import React from 'react'
 
 import { CatalogListing, type PageSearchParams } from '@/components/catalog/CatalogListing'
 import { getBrandBySlug } from '@/lib/catalog'
+import { toLocale } from '@/lib/i18n'
 
 interface Props {
-  params: Promise<{ slug: string }>
+  params: Promise<{ locale: string; slug: string }>
   searchParams: Promise<PageSearchParams>
 }
 
@@ -23,7 +24,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 /** Brand page (flow C): the shared faceted listing scoped by brand. */
 export default async function BrandPage({ params, searchParams }: Props): Promise<React.JSX.Element> {
-  const { slug } = await params
+  const { locale: raw, slug } = await params
+  const locale = toLocale(raw)
   const sp = await searchParams
   const brand = await getBrandBySlug(slug)
   if (!brand) notFound()
@@ -36,7 +38,7 @@ export default async function BrandPage({ params, searchParams }: Props): Promis
         { label: 'Branduri', href: '/brands' },
         { label: brand.name },
       ]}
-      context={{ brandSlug: slug }}
+      context={{ brandSlug: slug, locale }}
       searchParams={sp}
       path={`/brand/${slug}`}
     />

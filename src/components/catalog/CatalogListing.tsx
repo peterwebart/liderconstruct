@@ -1,5 +1,5 @@
 import { SearchX } from 'lucide-react'
-import Link from 'next/link'
+import { LocaleLink as Link } from '@/components/nav/LocaleLink'
 import React, { Suspense } from 'react'
 
 import { ProductGrid } from '@/components/catalog/ProductGrid'

@@ -1,15 +1,14 @@
 'use client'
 
-import { Heart, User } from 'lucide-react'
-import Link from 'next/link'
+import { Phone, Truck } from 'lucide-react'
 import React from 'react'
 
+import { LocaleLink as Link } from '@/components/nav/LocaleLink'
+import { LanguageSwitcher } from '@/components/nav/LanguageSwitcher'
 import { MegaMenu } from '@/components/nav/MegaMenu'
 import { MobileNav } from '@/components/nav/MobileNav'
 import { QuoteCart } from '@/components/quote/QuoteCart'
-import { LanguageSwitcher } from '@/components/nav/LanguageSwitcher'
 import { SmartSearch } from '@/components/search/SmartSearch'
-import { buttonVariants } from '@/components/ui'
 import { cn } from '@/lib/cn'
 import type { NavBrand, NavSection, PopularTerm } from '@/lib/navigation'
 
@@ -28,18 +27,14 @@ function Logo(): React.JSX.Element {
   )
 }
 
-const NAV_LINKS = [
-  { label: 'Branduri', href: '/brands' },
-  { label: 'Soluții', href: '/search' },
-  { label: 'Servicii', href: '/search' },
-  { label: 'Despre noi', href: '/despre' },
-  { label: 'Contact', href: '/contact' },
-]
-
 /**
- * Global header (matches the design): logo · PRODUCTS mega menu + nav ·
- * language · account/wishlist/quote · REQUEST A QUOTE. Sticky; on mobile the
- * search bar stays pinned beneath — for a contractor on site, search IS nav.
+ * Global header — deliberately minimal (change request §4/§12):
+ * Catalog · Phone · Search · Language · Delivery · Cart. Everything else
+ * (Soluții, Servicii, Despre, Contact, brand index) lives in the footer.
+ *
+ * No `backdrop-blur` here: it creates a stacking context that traps dropdowns.
+ * The catalog pane is portalled to <body>, so it opens correctly over the hero
+ * banner regardless of that section's `overflow-hidden`.
  */
 export function Header({
   sections,
@@ -57,64 +52,46 @@ export function Header({
   className?: string
 }): React.JSX.Element {
   return (
-    <header
-      className={cn(
-        'sticky top-0 z-40 border-b border-border bg-surface/95 backdrop-blur supports-[backdrop-filter]:bg-surface/85',
-        className,
-      )}
-    >
-      <div className="mx-auto flex h-14 max-w-[1320px] items-center gap-3 px-3 md:h-16 md:gap-5 md:px-6">
-        <MobileNav sections={sections}>
-          <SmartSearch locale={locale} popular={popular} autoFocus />
-        </MobileNav>
+    <header className={cn('sticky top-0 z-40 border-b border-border bg-surface', className)}>
+      <div className="mx-auto flex h-14 max-w-[1320px] items-center gap-3 px-3 md:h-16 md:gap-4 md:px-6">
+        {/* Mobile: Menu (catalog) — independent from Search below. */}
+        <MobileNav sections={sections} />
 
         <Logo />
 
-        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Navigație principală">
-          <MegaMenu sections={sections} featuredBrands={featuredBrands} popular={popular} />
-          {NAV_LINKS.map((l) => (
-            <Link
-              key={l.label}
-              href={l.href}
-              className="flex h-9 items-center rounded-control px-2.5 text-sm text-muted transition-colors hover:text-fg"
-            >
-              {l.label}
-            </Link>
-          ))}
-        </nav>
+        {/* Catalog — the single navigation entry point. */}
+        <div className="hidden lg:block">
+          <MegaMenu sections={sections} featuredBrands={featuredBrands} popular={popular} label="Catalog" />
+        </div>
 
-        {/* Desktop search fills the middle on md; nav takes over on lg. */}
-        <div className="ml-auto hidden max-w-xs flex-1 md:block lg:hidden">
+        {/* Search: the widest element, present on every page. */}
+        <div className="ml-auto hidden max-w-xl flex-1 md:block lg:ml-4">
           <SmartSearch locale={locale} popular={popular} />
         </div>
 
-        <div className="ml-auto flex items-center gap-1.5">
+        <div className="ml-auto flex items-center gap-1 md:ml-0 md:gap-2">
+          {phone && (
+            <a
+              href={`tel:${phone.replace(/\s/g, '')}`}
+              className="hidden items-center gap-1.5 text-sm text-muted transition-colors hover:text-fg lg:flex"
+            >
+              <Phone className="size-4 text-accent" aria-hidden />
+              <span className="font-mono text-xs">{phone}</span>
+            </a>
+          )}
+          <Link
+            href="/livrare"
+            className="hidden items-center gap-1.5 text-sm text-muted transition-colors hover:text-fg xl:flex"
+          >
+            <Truck className="size-4 text-accent" aria-hidden />
+            <span className="text-xs">Livrare</span>
+          </Link>
           <LanguageSwitcher locale={locale} />
-          <Link
-            href="/contul-meu"
-            aria-label="Contul meu"
-            className="hidden size-9 items-center justify-center rounded-control text-muted transition-colors hover:text-fg sm:flex"
-          >
-            <User className="size-5" aria-hidden />
-          </Link>
-          <Link
-            href="/favorite"
-            aria-label="Favorite"
-            className="hidden size-9 items-center justify-center rounded-control text-muted transition-colors hover:text-fg sm:flex"
-          >
-            <Heart className="size-5" aria-hidden />
-          </Link>
           <QuoteCart locale={locale} />
-          <Link
-            href={phone ? `tel:${phone.replace(/\s/g, '')}` : '/contact'}
-            className={buttonVariants({ size: 'sm', className: 'ml-1 hidden font-semibold sm:inline-flex' })}
-          >
-            Cere ofertă
-          </Link>
         </div>
       </div>
 
-      {/* Mobile: search pinned under the header on every screen. */}
+      {/* Mobile: search pinned under the header on every page. */}
       <div className="border-t border-border px-3 pb-2.5 pt-2 md:hidden">
         <SmartSearch locale={locale} popular={popular} />
       </div>

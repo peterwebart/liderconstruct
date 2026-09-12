@@ -1,21 +1,26 @@
 'use client'
 
 import { Check, ChevronDown } from 'lucide-react'
+import { usePathname, useRouter } from 'next/navigation'
 import React, { useEffect, useRef, useState } from 'react'
 
 import { cn } from '@/lib/cn'
+import { LOCALES, LOCALE_LABELS, localePath, stripLocale, type Locale } from '@/lib/i18n'
 
 /**
- * RO/RU switcher. RU routing lands with the i18n increment — until then the
- * RU entry is visible but disabled (honest state, no dead navigation).
+ * RO/RU switcher (ADR-0009). Switches the locale segment while preserving the
+ * current path and query, so a reader on /ro/brand/knauf lands on
+ * /ru/brand/knauf. Both locales are live.
  */
 export function LanguageSwitcher({
   locale = 'ro',
   className,
 }: {
-  locale?: 'ro' | 'ru'
+  locale?: Locale
   className?: string
 }): React.JSX.Element {
+  const router = useRouter()
+  const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -35,6 +40,14 @@ export function LanguageSwitcher({
     }
   }, [open])
 
+  const switchTo = (target: Locale): void => {
+    setOpen(false)
+    if (target === locale) return
+    const { rest } = stripLocale(pathname || '/')
+    const search = typeof window !== 'undefined' ? window.location.search : ''
+    router.push(`${localePath(target, rest)}${search}`)
+  }
+
   return (
     <div ref={ref} className={cn('relative', className)}>
       <button
@@ -52,26 +65,19 @@ export function LanguageSwitcher({
           role="menu"
           className="menu-pane absolute right-0 top-full z-50 mt-1.5 w-44 rounded-card border border-border bg-surface p-1 shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
         >
-          <button
-            type="button"
-            role="menuitemradio"
-            aria-checked={locale === 'ro'}
-            className="flex w-full items-center justify-between rounded-control px-2.5 py-1.5 text-sm text-fg hover:bg-surface-2"
-            onClick={() => setOpen(false)}
-          >
-            Română
-            {locale === 'ro' && <Check className="size-3.5 text-accent" aria-hidden />}
-          </button>
-          <div
-            role="menuitemradio"
-            aria-checked={false}
-            aria-disabled
-            className="flex w-full cursor-not-allowed items-center justify-between rounded-control px-2.5 py-1.5 text-sm text-faint"
-            title="Versiunea rusă — disponibilă în curând"
-          >
-            Русский
-            <span className="text-[10px]">în curând</span>
-          </div>
+          {LOCALES.map((l) => (
+            <button
+              key={l}
+              type="button"
+              role="menuitemradio"
+              aria-checked={locale === l}
+              onClick={() => switchTo(l)}
+              className="flex w-full items-center justify-between rounded-control px-2.5 py-1.5 text-sm text-fg transition-colors hover:bg-surface-2"
+            >
+              {LOCALE_LABELS[l]}
+              {locale === l && <Check className="size-3.5 text-accent" aria-hidden />}
+            </button>
+          ))}
         </div>
       )}
     </div>

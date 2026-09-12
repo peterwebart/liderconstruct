@@ -7,6 +7,7 @@ import { CategoryCard } from '@/components/catalog/CategoryCard'
 import { ProductGrid } from '@/components/catalog/ProductGrid'
 import { HomeHero } from '@/components/home/HomeHero'
 import { buttonVariants } from '@/components/ui'
+import { toLocale } from '@/lib/i18n'
 import { getHomepageData } from '@/lib/homepage'
 import { getNavigation, getPopularSearches, getTopBrands } from '@/lib/navigation'
 
@@ -37,8 +38,13 @@ function SectionHeading({
  * hero: banner + 3-step finder + top brands. Everything below is
  * CMS/taxonomy-driven with live fallbacks, useful from the first import onward.
  */
-export default async function HomePage(): Promise<React.JSX.Element> {
-  const locale = 'ro' as const
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<React.JSX.Element> {
+  const { locale: raw } = await params
+  const locale = toLocale(raw)
   const [nav, popular, topBrands, home] = await Promise.all([
     getNavigation(locale),
     getPopularSearches(locale),
@@ -49,7 +55,7 @@ export default async function HomePage(): Promise<React.JSX.Element> {
 
   return (
     <>
-      <HomeHero sections={nav.sections} brands={topBrands} popular={popular} stats={home.stats} />
+      <HomeHero sections={nav.sections} popular={popular} stats={home.stats} />
 
       <div className="mx-auto w-full max-w-[1320px] px-4 md:px-6">
 

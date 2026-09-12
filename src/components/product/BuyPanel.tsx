@@ -1,7 +1,7 @@
 'use client'
 
 import { ArrowLeftRight, Check, Phone, Plus } from 'lucide-react'
-import Link from 'next/link'
+import { LocaleLink as Link } from '@/components/nav/LocaleLink'
 import React, { useMemo, useRef, useState } from 'react'
 
 import { Button, buttonVariants, PriceDisplay, QuantityStepper, StockBadge } from '@/components/ui'

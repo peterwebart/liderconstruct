@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Link from 'next/link'
+import { LocaleLink as Link } from '@/components/nav/LocaleLink'
 import React from 'react'
 
 import { cn } from '@/lib/cn'

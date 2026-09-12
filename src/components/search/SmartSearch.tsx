@@ -1,11 +1,12 @@
 'use client'
 
 import { ArrowRight, Building2, Clock, LayoutGrid, Loader2, Search, X } from 'lucide-react'
-import { useRouter } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { PriceDisplay } from '@/components/ui'
 import { cn } from '@/lib/cn'
+import { localePath, toLocale } from '@/lib/i18n'
 import type { SuggestGroups } from '@/services/search/types'
 
 const RECENT_KEY = 'lc:recent-searches'
@@ -53,6 +54,8 @@ export function SmartSearch({
   className?: string
 }): React.JSX.Element {
   const router = useRouter()
+  const params = useParams()
+  const searchLocale = toLocale(params?.locale)
   const containerRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const listId = React.useId()
@@ -152,9 +155,9 @@ export function SmartSearch({
     (href: string) => {
       saveRecent(term)
       setOpen(false)
-      router.push(href)
+      router.push(href.startsWith('/') ? localePath(searchLocale, href) : href)
     },
-    [router, saveRecent, term],
+    [router, saveRecent, term, searchLocale],
   )
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {

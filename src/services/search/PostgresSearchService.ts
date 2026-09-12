@@ -21,12 +21,19 @@ const emptyGroups = (term: string): SuggestGroups => ({ term, products: [], bran
 type StockStatus = 'in_stock' | 'low_stock' | 'out_of_stock'
 const STOCK_RANK: Record<StockStatus, number> = { in_stock: 2, low_stock: 1, out_of_stock: 0 }
 
+/** How many variations a listing card may carry. Bounded on purpose: the
+ * catalog must stay light at 10k+ products. Cards show up to 3 inline and the
+ * rest in a compact picker; anything beyond this cap links to the PDP. */
+export const CARD_VARIATION_LIMIT = 8
+
 interface VariationAgg {
   priceMin: number | null
   stock: StockStatus
   count: number
   firstSku: string | null
   firstLabel: string | null
+  /** Bounded, price-ascending subset for the card selector. */
+  list: { sku: string; label: string | null; price: number | null; priceOnRequest: boolean; stockStatus: StockStatus }[]
 }
 
 interface ResolvedContext {
@@ -413,6 +420,7 @@ export class PostgresSearchService implements SearchService {
             legacyKey: true,
             attributes: true,
             popularity: true,
+            displayOrder: true,
             createdAt: true,
           },
         }),
@@ -439,8 +447,16 @@ export class PostgresSearchService implements SearchService {
           count: 0,
           firstSku: null,
           firstLabel: null,
+          list: [],
         }
         a.count += 1
+        a.list.push({
+          sku: v.sku,
+          label: v.label ?? null,
+          price: typeof v.price === 'number' && !v.priceOnRequest ? v.price : null,
+          priceOnRequest: Boolean(v.priceOnRequest) || v.price == null,
+          stockStatus: (v.stockStatus ?? 'out_of_stock') as StockStatus,
+        })
         if (a.count === 1) {
           a.firstSku = v.sku
           a.firstLabel = v.label ?? null
@@ -462,7 +478,7 @@ export class PostgresSearchService implements SearchService {
       let items = prods.docs.map((p) => {
         const a =
           agg.get(p.id) ??
-          ({ priceMin: null, stock: 'out_of_stock', count: 0, firstSku: null, firstLabel: null } as VariationAgg)
+          ({ priceMin: null, stock: 'out_of_stock', count: 0, firstSku: null, firstLabel: null, list: [] } as VariationAgg)
         const bid = typeof p.brand === 'number' ? p.brand : p.brand?.id
         const uid = typeof p.unit === 'number' ? p.unit : p.unit?.id
         const brand = bid != null ? brandById.get(bid) : undefined
@@ -500,7 +516,17 @@ export class PostgresSearchService implements SearchService {
       } else if (sort === 'newest') {
         items.sort((x, y) => String(y.doc.createdAt ?? '').localeCompare(String(x.doc.createdAt ?? '')))
       } else {
-        items.sort((x, y) => (y.doc.popularity ?? 0) - (x.doc.popularity ?? 0) || byTitle(x, y))
+        // "Recomandate" (default): admin-defined displayOrder first (ascending,
+        // unset last), then popularity, then title — deterministic even when
+        // most products have no manual position yet.
+        const pos = (d: { displayOrder?: number | null }): number =>
+          typeof d.displayOrder === 'number' ? d.displayOrder : Number.POSITIVE_INFINITY
+        items.sort(
+          (x, y) =>
+            pos(x.doc) - pos(y.doc) ||
+            (y.doc.popularity ?? 0) - (x.doc.popularity ?? 0) ||
+            byTitle(x, y),
+        )
       }
 
       const total = items.length
@@ -518,6 +544,13 @@ export class PostgresSearchService implements SearchService {
         unit: i.unit,
         primaryImageUrl: null,
         variationCount: i.a.count,
+        variations: [...i.a.list]
+          .sort(
+            (x, y) =>
+              (x.price ?? Number.POSITIVE_INFINITY) - (y.price ?? Number.POSITIVE_INFINITY) ||
+              String(x.label ?? x.sku).localeCompare(String(y.label ?? y.sku), 'ro'),
+          )
+          .slice(0, CARD_VARIATION_LIMIT),
         defaultVariationSku: i.a.count === 1 ? i.a.firstSku : null,
         defaultVariationLabel: i.a.count === 1 ? i.a.firstLabel : null,
       }))

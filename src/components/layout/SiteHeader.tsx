@@ -3,7 +3,6 @@ import React from 'react'
 import { getNavigation, getPopularSearches } from '@/lib/navigation'
 
 import { Header } from './Header'
-import { TopBar } from './TopBar'
 
 /**
  * Server wrapper: fetches the CMS-driven navigation (cached, fail-safe) and
@@ -17,15 +16,12 @@ export async function SiteHeader({
 }): Promise<React.JSX.Element> {
   const [nav, popular] = await Promise.all([getNavigation(locale), getPopularSearches(locale)])
   return (
-    <>
-      <TopBar />
-      <Header
+    <Header
       sections={nav.sections}
       featuredBrands={nav.featuredBrands}
       popular={popular}
       locale={locale}
-        phone={process.env.NEXT_PUBLIC_CONTACT_PHONE ?? null}
-      />
-    </>
+      phone={process.env.NEXT_PUBLIC_CONTACT_PHONE ?? null}
+    />
   )
 }

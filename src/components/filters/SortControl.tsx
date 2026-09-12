@@ -8,7 +8,7 @@ import { cn } from '@/lib/cn'
 import { buildFilterParams, parseFilters, type SortKey, type ViewKey } from '@/lib/filter-params'
 
 const SORT_LABELS: Record<SortKey, string> = {
-  relevance: 'Relevanță',
+  relevance: 'Recomandate',
   price_asc: 'Preț crescător',
   price_desc: 'Preț descrescător',
   newest: 'Cele mai noi',

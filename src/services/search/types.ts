@@ -21,6 +21,15 @@ export interface SearchQuery {
   pageSize?: number
 }
 
+/** Bounded variation subset carried on a hit for listing cards. */
+export interface SearchHitVariation {
+  sku: string
+  label: string | null
+  price: number | null
+  priceOnRequest: boolean
+  stockStatus: 'in_stock' | 'low_stock' | 'out_of_stock'
+}
+
 export interface SearchHit {
   id: string
   slug: string
@@ -35,6 +44,8 @@ export interface SearchHit {
   unit?: string | null
   primaryImageUrl?: string | null
   variationCount: number
+  /** Capped subset (see CARD_VARIATION_LIMIT) for in-card selection. */
+  variations: SearchHitVariation[]
   defaultVariationSku?: string | null
   defaultVariationLabel?: string | null
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import { ChevronDown, Menu, X } from 'lucide-react'
-import Link from 'next/link'
+import { LocaleLink as Link } from '@/components/nav/LocaleLink'
 import React, { useEffect, useState } from 'react'
 
 import { cn } from '@/lib/cn'

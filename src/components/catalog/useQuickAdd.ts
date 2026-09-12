@@ -2,40 +2,40 @@
 
 import { useCallback, useRef, useState } from 'react'
 
-import type { ProductCardData } from '@/lib/catalog-types'
 import { useQuote } from '@/components/quote/QuoteProvider'
+import type { ProductCardData, ProductCardVariation } from '@/lib/catalog-types'
 
 /**
- * Card-level add: only single-variation products can be added directly
- * (the ordering model requires picking the variation first — spec flow F);
- * multi-variation cards link to the product page instead.
+ * Card-level add-to-cart. The cart line is always keyed by VARIATION SKU (a
+ * product alone is not sellable), so the caller passes the selected variation
+ * and quantity from the card's own controls.
  */
 export function useQuickAdd(product: ProductCardData): {
-  canQuickAdd: boolean
   added: boolean
-  add: () => void
+  add: (variation: ProductCardVariation | null, quantity: number) => void
 } {
   const quote = useQuote()
   const [added, setAdded] = useState(false)
   const timer = useRef<number | null>(null)
 
-  const canQuickAdd = product.variationCount <= 1 && Boolean(product.defaultVariationSku)
+  const add = useCallback(
+    (variation: ProductCardVariation | null, quantity: number) => {
+      if (!variation) return
+      quote.add({
+        sku: variation.sku,
+        productSlug: product.slug,
+        title: product.title,
+        variationLabel: variation.label ?? undefined,
+        unitPrice: variation.priceOnRequest ? null : variation.price,
+        priceOnRequest: variation.priceOnRequest,
+        quantity: Math.max(1, Math.round(quantity)),
+      })
+      setAdded(true)
+      if (timer.current) window.clearTimeout(timer.current)
+      timer.current = window.setTimeout(() => setAdded(false), 1600)
+    },
+    [product.slug, product.title, quote],
+  )
 
-  const add = useCallback(() => {
-    if (!product.defaultVariationSku) return
-    quote.add({
-      sku: product.defaultVariationSku,
-      productSlug: product.slug,
-      title: product.title,
-      variationLabel: product.defaultVariationLabel ?? undefined,
-      unitPrice: product.priceOnRequest ? null : product.priceMin,
-      priceOnRequest: product.priceOnRequest,
-      quantity: 1,
-    })
-    setAdded(true)
-    if (timer.current) window.clearTimeout(timer.current)
-    timer.current = window.setTimeout(() => setAdded(false), 1400)
-  }, [product, quote])
-
-  return { canQuickAdd, added, add }
+  return { added, add }
 }

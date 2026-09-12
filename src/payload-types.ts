@@ -432,6 +432,10 @@ export interface Product {
    * Popularity signal used by search ranking.
    */
   popularity?: number | null;
+  /**
+   * Manual catalog position for the storefront "Recomandate" sort (default). Lower numbers appear first (1, 2, 3…); products left empty fall after ordered ones, then sort by popularity and name. Applies globally, in every category and listing. Admin-owned: the catalog importer never changes this value.
+   */
+  displayOrder?: number | null;
   faqs?:
     | {
         question: string;
@@ -1268,6 +1272,7 @@ export interface ProductsSelect<T extends boolean = true> {
   replacementParts?: T;
   keywords?: T;
   popularity?: T;
+  displayOrder?: T;
   faqs?:
     | T
     | {

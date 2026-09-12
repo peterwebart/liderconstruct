@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { LocaleLink as Link } from '@/components/nav/LocaleLink'
 import React from 'react'
 
 import { cn } from '@/lib/cn'
@@ -101,6 +101,11 @@ export function Footer({
               <li>
                 <Link href="/contact" className="text-sm text-muted transition-colors hover:text-fg">
                   Contact
+                </Link>
+              </li>
+              <li>
+                <Link href="/termeni" className="text-sm text-muted transition-colors hover:text-fg">
+                  Termeni și condiții
                 </Link>
               </li>
             </ul>

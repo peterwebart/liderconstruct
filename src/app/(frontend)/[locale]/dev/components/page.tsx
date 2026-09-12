@@ -113,25 +113,38 @@ const demoProducts: ProductCardData[] = [
     id: 'p1', slug: 'vata-minerala-rockwool-roofrock-100', title: 'Vată minerală Rockwool Roofrock 100mm',
     brand: 'Rockwool', sku: 'LC-12345', priceMin: 142.2, priceOnRequest: false,
     stockStatus: 'in_stock', unit: 'm²', imageUrl: null, variationCount: 1,
+    variations: [{ sku: 'LC-12345', label: '100mm', price: 142.2, priceOnRequest: false, stockStatus: 'in_stock' }],
     defaultVariationSku: 'LC-12345', defaultVariationLabel: '100mm',
   },
   {
     id: 'p2', slug: 'usa-interior-mira-nuc', title: 'Ușă de interior Mira, nuc clasic',
     brand: 'Novii Stili', sku: 'LC-43122', priceMin: 3450, priceOnRequest: false,
     stockStatus: 'low_stock', unit: 'buc', imageUrl: null, variationCount: 4,
+    variations: [
+      { sku: 'LC-43122/1', label: '60×200 cm', price: 3450, priceOnRequest: false, stockStatus: 'in_stock' },
+      { sku: 'LC-43122/2', label: '70×200 cm', price: 3450, priceOnRequest: false, stockStatus: 'in_stock' },
+      { sku: 'LC-43122/3', label: '80×200 cm', price: 3610, priceOnRequest: false, stockStatus: 'low_stock' },
+      { sku: 'LC-43122/4', label: '90×200 cm', price: 3780, priceOnRequest: false, stockStatus: 'in_stock' },
+    ],
     defaultVariationSku: null, defaultVariationLabel: null,
   },
   {
     id: 'p3', slug: 'multirock-rulou', title: 'Rockwool Multirock rulou',
     brand: 'Rockwool', sku: 'LC-12361', priceMin: null, priceOnRequest: true,
     stockStatus: 'in_stock', unit: null, imageUrl: null, variationCount: 1,
+    variations: [{ sku: 'LC-12361', label: null, price: null, priceOnRequest: true, stockStatus: 'in_stock' }],
     defaultVariationSku: 'LC-12361', defaultVariationLabel: null,
   },
   {
     id: 'p4', slug: 'glet-supraten-eurofin', title: 'Glet Supraten Eurofin SV+ pentru finisare',
     brand: 'Supraten', sku: 'LC-15463', priceMin: 209, priceOnRequest: false,
-    stockStatus: 'out_of_stock', unit: 'sac', imageUrl: null, variationCount: 1,
-    defaultVariationSku: 'LC-15463', defaultVariationLabel: '20 kg',
+    stockStatus: 'out_of_stock', unit: 'sac', imageUrl: null, variationCount: 3,
+    variations: [
+      { sku: 'LC-15463/1', label: '5 kg', price: 68, priceOnRequest: false, stockStatus: 'in_stock' },
+      { sku: 'LC-15463/2', label: '20 kg', price: 209, priceOnRequest: false, stockStatus: 'low_stock' },
+      { sku: 'LC-15463/3', label: '25 kg', price: 245, priceOnRequest: false, stockStatus: 'out_of_stock' },
+    ],
+    defaultVariationSku: null, defaultVariationLabel: null,
   },
 ]
 
